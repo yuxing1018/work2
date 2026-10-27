@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>沈玉星 · 秋招粘贴素材库</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%230b2a68'/%3E%3Cg fill='none' stroke='%23cfe2ff' stroke-width='1.9' stroke-linecap='round'%3E%3Ccircle cx='20' cy='20' r='13.5'/%3E%3Cpath d='M13.4 25.8 L20 13.4 L26.6 25.8'/%3E%3Cpath d='M16.6 21.2 H23.4'/%3E%3C/g%3E%3C/svg%3E" />
+<style>
+  :root{
+    --ink:#eef3ff;
+    --dim:rgba(238,243,255,.66);
+    --faint:rgba(238,243,255,.40);
+    --line:rgba(238,243,255,.15);
+    --line-strong:rgba(238,243,255,.30);
+    --glow-a:#ffe6b0;
+    --glow-b:#b9f0d2;
+    --glow-c:#d9c6f7;
+    --glow-d:#9fc8ff;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    color:var(--ink);
+    background:#0b2a68;
+    font:13.6px/1.75 -apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  /* ---------- 背景光晕（参考海报的柔光色块） ---------- */
+  .bg{position:fixed;inset:0;z-index:0;overflow:hidden;
+    background:linear-gradient(180deg,#0a2459 0%,#12377f 46%,#0a2258 100%);
+  }
+  .bg i{position:absolute;display:block;border-radius:50%;filter:blur(64px);opacity:.72;mix-blend-mode:screen;}
+  .bg .g1{width:56vw;height:44vw;left:-8vw;top:4vh;background:var(--glow-a);opacity:.42}
+  .bg .g2{width:50vw;height:38vw;right:-6vw;top:0vh;background:var(--glow-b);opacity:.38}
+  .bg .g3{width:66vw;height:48vw;left:14vw;top:28vh;background:var(--glow-c);opacity:.46}
+  .bg .g4{width:50vw;height:34vw;right:2vw;top:50vh;background:var(--glow-d);opacity:.34}
+  .bg .g5{width:44vw;height:30vw;left:-10vw;top:68vh;background:var(--glow-a);opacity:.30}
+  .bg:after{content:"";position:absolute;inset:0;
+    background:radial-gradient(130% 90% at 50% 42%, transparent 42%, rgba(6,20,50,.42) 100%);}
+
+  .page{position:relative;z-index:1}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 26px}
+  /* 正文区：半透明磨砂底，抬走背后光晕、保证白字对比度 */
+  main.wrap{
+    background:rgba(6,18,45,.46);
+    backdrop-filter:blur(10px) saturate(1.05);
+    border-radius:3px;
+    padding:10px 26px 22px;
+    margin-top:28px;margin-bottom:46px;
+    box-shadow:0 26px 90px rgba(0,0,0,.30), inset 0 0 0 1px rgba(238,243,255,.06);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{padding:64px 0 34px;position:relative}
+  .hero .rule{height:1px;background:linear-gradient(90deg,var(--line-strong),transparent);margin-bottom:22px}
+  .meta-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+    font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--faint);}
+  .hero h1{
+    margin:0;font-weight:300;font-size:clamp(38px,7vw,74px);
+    letter-spacing:.30em;line-height:1.05;text-transform:uppercase;
+    color:#f4f7ff;text-shadow:0 0 40px rgba(160,200,255,.35);
+    padding-left:.30em;
+  }
+  .hero .logo{margin-top:24px;display:flex;align-items:center;gap:20px}
+  .hero .logo .mark{
+    width:56px;height:56px;flex:none;fill:none;
+    stroke:rgba(222,234,255,.82);stroke-width:1.05;stroke-linecap:round;
+    filter:drop-shadow(0 0 18px rgba(160,200,255,.55));
+  }
+  .hero .logo .cn{margin:9px 0 0}
+  .hero .sub{margin:20px 0 0;max-width:640px;font-size:12.5px;color:var(--dim);letter-spacing:.02em}
+  .hero .axis{margin-top:34px;height:1px;background:var(--line);position:relative}
+  .hero .axis:before,.hero .axis:after{content:"";position:absolute;top:-3px;width:1px;height:7px;background:var(--line-strong)}
+  .hero .axis:before{left:0} .hero .axis:after{right:0}
+
+  /* ---------- 版本切换 ---------- */
+  .bar{position:sticky;top:0;z-index:20;padding:14px 0 15px;
+    background:linear-gradient(180deg,rgba(10,34,84,.94),rgba(10,34,84,.72));
+    backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
+  .bar .wrap{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .bar .lbl{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);margin-right:6px}
+  .status{margin-left:auto;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);
+    border-left:1px solid var(--line);padding-left:14px}
+  section[id]{scroll-margin-top:92px}
+  .chip{
+    border:1px solid var(--line);background:transparent;color:var(--dim);
+    padding:6px 15px;font-size:12px;letter-spacing:.08em;cursor:pointer;
+    border-radius:1px;transition:.18s;font-family:inherit;
+  }
+  .chip:hover{border-color:var(--line-strong);color:var(--ink)}
+  .chip.on{background:rgba(238,243,255,.94);border-color:transparent;color:#0b2a68;font-weight:600}
+
+  /* ---------- 区块 ---------- */
+  section{padding:46px 0 4px}
+  h2{
+    margin:0 0 22px;font-size:10.5px;font-weight:500;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--dim);
+    display:flex;align-items:baseline;gap:14px;
+  }
+  h2 b{font-size:9px;letter-spacing:.2em;color:var(--faint);font-weight:400}
+  h2:after{content:"";flex:1;height:1px;background:var(--line)}
+
+  .group{margin:0 0 30px}
+  .group-h{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:2px}
+  .group-h h3{margin:0;font-size:14.5px;font-weight:500;letter-spacing:.04em;color:#f2f6ff}
+  .group-h .m{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+
+  .item{border-top:1px solid var(--line);padding:16px 0 17px}
+  .item:first-of-type{border-top:1px solid var(--line-strong)}
+  .top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:7px}
+  .tag{font-size:12.4px;font-weight:600;color:#f6f9ff;letter-spacing:.02em}
+  .vs{display:flex;gap:5px;flex-wrap:wrap}
+  .vs span{
+    font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:rgba(238,243,255,.55);border:1px solid var(--line);
+    padding:1px 7px;border-radius:1px;
+  }
+  .txt{white-space:pre-wrap;color:rgba(238,243,255,.90);font-size:13.2px;line-height:1.78;max-width:74ch}
+
+  .copy{
+    margin-left:auto;font-family:inherit;font-size:9.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:rgba(238,243,255,.62);background:transparent;
+    border:1px solid var(--line);padding:4px 11px;border-radius:1px;cursor:pointer;transition:.18s;
+  }
+  .copy:hover{color:#0b2a68;background:rgba(238,243,255,.92);border-color:transparent}
+
+  /* ---------- 键值表 ---------- */
+  .kv{display:grid;grid-template-columns:132px 1fr auto;align-items:stretch}
+  .kv>div{border-top:1px solid var(--line);padding:11px 14px 11px 0;font-size:12.8px}
+  .kv>div:nth-child(3n+1){color:var(--faint);font-size:11px;letter-spacing:.1em}
+  .kv>div:nth-child(3n+2){color:rgba(238,243,255,.90);word-break:break-all}
+  .kv>div:nth-child(3n){border-top:1px solid var(--line);display:flex;align-items:center;justify-content:flex-end;padding-right:0}
+
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line-strong)}
+  .kpi{padding:18px 18px 16px 0;border-right:1px solid var(--line)}
+  .kpi:last-child{border-right:0}
+  .kpi .n{font-size:clamp(24px,3.2vw,38px);font-weight:300;letter-spacing:.03em;line-height:1;color:#f4f7ff}
+  .kpi .n small{font-size:.42em;font-weight:400;letter-spacing:.08em;margin-left:6px;color:var(--dim)}
+  .kpi .l{margin-top:10px;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
+  .kpi .s{margin-top:5px;font-size:11px;color:var(--dim)}
+  .kpi.warn .n{color:#ffd8a3}
+  .note{border-top:1px solid var(--line);padding:13px 0;font-size:12.6px;color:rgba(238,243,255,.90);display:flex;gap:14px;align-items:baseline}
+  .note .when{flex:none;width:110px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+  .note b{color:#f6f9ff;font-weight:600}
+  @media (max-width:720px){.kpis{grid-template-columns:repeat(2,1fr)}.kpi:nth-child(2){border-right:0}}
+  .hint{margin:12px 0 0;font-size:11.5px;color:var(--faint);letter-spacing:.02em}
+  .sub-label{margin:26px 0 8px;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--faint)}
+  .kv a{color:#bfe9d8;text-decoration:none;border-bottom:1px solid rgba(191,233,216,.35);word-break:break-all}
+  .kv a:hover{color:#e6fff4;border-bottom-color:#e6fff4}
+  .kv .v.todo{color:var(--faint);font-style:italic}
+  .proj{border-top:1px solid var(--line);padding:16px 0 14px}
+  .proj:first-of-type{border-top:1px solid var(--line-strong)}
+  .blk{display:flex;gap:9px;align-items:baseline;margin-top:10px}
+  .blk .k{flex:none;color:var(--faint);font-size:11.5px;letter-spacing:.08em}
+  .blk .t{flex:1;color:rgba(238,243,255,.90);font-size:13.2px;line-height:1.78}
+  .copy.mini{flex:none;font-size:9px;padding:2px 8px;letter-spacing:.1em;opacity:.55}
+  .copy.mini:hover{opacity:1}
+  .empty{color:var(--faint);padding:26px 0;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+
+  footer{margin-top:60px;padding:22px 0 46px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint)}
+
+  #toast{position:fixed;left:50%;bottom:34px;transform:translateX(-50%) translateY(16px);
+    background:rgba(238,243,255,.96);color:#0b2a68;padding:9px 20px;border-radius:1px;
+    font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;opacity:0;pointer-events:none;transition:.22s;}
+  #toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  @media (max-width:680px){
+    .wrap{padding:0 18px}
+    .kv{grid-template-columns:96px 1fr auto}
+    .txt{max-width:none}
+    .hero{padding:44px 0 26px}
+  }
+</style>
+</head>
+<body>
+
+<div class="bg"><i class="g1"></i><i class="g2"></i><i class="g3"></i><i class="g4"></i><i class="g5"></i></div>
+
+<div class="page">
+
+<header class="hero wrap">
+  <div class="rule"></div>
+  <div class="meta-row">
+    <span>Resume · Material Archive</span>
+    <span>Shen Yuxing / 2027 Campus</span>
+    <span>Shanghai — Manchester</span>
+  </div>
+  <div class="logo">
+    <svg class="mark" viewBox="0 0 40 40" aria-hidden="true">
+      <circle cx="20" cy="20" r="15"/>
+      <path d="M12.2 26.4 L20 12.6 L27.8 26.4"/>
+      <path d="M15.6 21.2 H24.4"/>
+    </svg>
+    <div>
+      <h1>Archive</h1>
+      <p class="cn">秋 招 粘 贴 素 材 库</p>
+    </div>
+  </div>
+  <p class="sub">按简历版本筛选，点「复制」直接粘进网申表单。内容对齐 2027 届内容运营 / 产品运营 / 市场部三份最新原件。</p>
+  <div class="axis"></div>
+</header>
+
+<div class="bar">
+  <div class="wrap">
+    <span class="lbl">Version</span>
+    <div id="chips" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+    <span class="status" id="status"></span>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section id="sec-summary">
+    <h2>投递概览 <b>00</b></h2>
+    <div class="kpis" id="kpis"></div>
+    <div id="sumnotes"></div>
+    <p class="hint" id="summeta"></p>
+  </section>
+
+  <section>
+    <h2>基本信息 <b>01</b></h2>
+    <div class="kv" id="basic"></div>
+    <p class="sub-label">Links · 资源链接</p>
+    <div class="kv" id="links"></div>
+    <p class="hint">到岗时间各版写法不同：有「7月到岗，5天/周」，也有只留微信不放的。按目标公司要求挑。点链接可直接在新标签页打开。</p>
+  </section>
+
+  <section>
+    <h2>教育经历 <b>02</b></h2>
+    <div id="edu"></div>
+    <p class="hint">本科学院名称填报前请核对一次：广播电视编导一般属「影视传媒学院」，以毕业证书 / 学信网为准。</p>
+  </section>
+
+  <section id="sec-jobs">
+    <h2>实习经历 <b>03</b></h2>
+    <div id="jobs"></div>
+  </section>
+
+  <section>
+    <h2>项目经历 <b>04</b></h2>
+    <div id="projects"></div>
+  </section>
+
+  <section>
+    <h2>个人技能 <b>05</b></h2>
+    <div id="skills"></div>
+  </section>
+
+  <section>
+    <h2>网申字段速查 <b>06</b></h2>
+    <div class="kv" id="form"></div>
+  </section>
+
+  <footer>
+    <span>Shen Yuxing · Material Archive</span>
+    <span id="foot-right"></span>
+  </footer>
+
+</main>
+</div>
+
+<div id="toast">copied</div>
+
+<script>
+const VERSIONS = ["内容运营","产品运营","用户运营","消费者洞察","快消","市场部"];
+let current = "全部";
+
+/* ---------- 数据 ---------- */
+
+/* ==== SUMMARY · auto-generated（由程小帮每天 08:30 / 20:30 覆写）==== */
+const SUMMARY = {
+  generated: "2026-10-27 10:11",
+  source: "飞书「秋招投递记录」",
+  applied: 29,
+  appliedDelta: 2,
+  baseline: "2026-10-26 22:53",
+  newOpen: [
+    { name: "LV 路易威登 · 2027 管理培训生", when: "10/15–10/21 陆续上线", deadline: "约 11/30（转述，未官方证实）" }
+  ],
+  closing7: [
+    { name: "地平线", date: "2026-10-30", days: 3, status: "未投递" },
+    { name: "唯品会", date: "2026-10-30", days: 3, status: "未投递" },
+    { name: "福特中国", date: "2026-10-30", days: 3, status: "未投递" },
+    { name: "微软", date: "2026-10-31", days: 4, status: "未投递" },
+    { name: "叠纸游戏", date: "2026-10-31", days: 4, status: "未投递" },
+    { name: "达能", date: "2026-10-31", days: 4, status: "未投递" },
+    { name: "可口可乐", date: "2026-10-31", days: 4, status: "未投递" },
+    { name: "汉高", date: "2026-10-31", days: 4, status: "未投递" },
+    { name: "德勤中国", date: "2026-10-31", days: 4, status: "未投递" }
+  ]
+};
+const SNAP = {
+  at: "2026-10-27 10:11",
+  applied: 29,
+  total: 151,
+  appliedList: ["网易","莉莉丝","京东","科大讯飞","华为","bilibili（哔哩哔哩）","超参数科技","MiniMax（稀宇科技）","百川智能（Baichuan AI）","联合利华（Unilever）","雅诗兰黛（Estée Lauder）","百事（PepsiCo）","高露洁（Colgate-Palmolive）","阿迪达斯（adidas）","贝泰妮（薇诺娜）","上海家化","名创优品","泡泡玛特","ZARA（Inditex 中国）","波司登","得物","哈啰","SHEIN（希音）","拓竹（Bambu Lab）","立白（立白科技集团）","欧莱雅百库（L'Oréal ET）","华润（华润集团）","路易威登（LV）","诺奥思（NAOS · 贝德玛）"]
+};
+/* ==== /SUMMARY ==== */
+
+const BASIC = [
+  ["姓名", "沈玉星"],
+  ["作品集", "https://bag-chi.vercel.app/"],
+  ["现居 / 期望城市", "上海（现于曼彻斯特读研，2026 年 12 月底毕业）"],
+  ["到岗时间", "7月到岗，5天/周"],
+  ["英语", "雅思 7.0（听力 7.5 / 阅读 7.5 / 写作 7.0 / 口语 6.0）"],
+];
+
+const LINKS = [
+  ["个人作品集", "https://bag-chi.vercel.app/"],
+  ["飞书 · 秋招投递记录", "https://my.feishu.cn/base/DGxebehSTafTqssEMDlc2ag6nZf"],
+  ["飞书 · 个人主页", ""],
+];
+
+const EDU = [
+  {
+    title: "曼彻斯特大学 · 硕士",
+    meta: "2025.09 – 2026.12 ｜ 统招全日制 ｜ 最高学历",
+    rows: [
+      ["学校名称", "曼彻斯特大学（The University of Manchester）"],
+      ["学院名称", "Schools of Arts, Languages and Cultures"],
+      ["专业名称", "电影理论（Film Studies）"],
+      ["学历 / 学历类型", "硕士研究生 ｜ 统招全日制"],
+      ["是否最高学历", "是"],
+      ["开始 – 结束", "2025-09 至 2026-12"],
+      ["专业排名", "前 20%"],
+      ["主修课程", "受众分析、电影文化与产业、电影理论、国家电影等"],
+      ["学号 / 实验室 / 研究方向", "无（学号按学校系统填；实验室与研究方向不适用）"],
+    ],
+  },
+  {
+    title: "上海师范大学 · 本科",
+    meta: "2021.09 – 2025.06 ｜ 统招全日制",
+    rows: [
+      ["学校名称", "上海师范大学"],
+      ["学院名称", "影视传媒学院（填报前请核对）"],
+      ["专业名称", "广播电视编导"],
+      ["学历 / 学历类型", "本科 ｜ 统招全日制"],
+      ["是否最高学历", "否"],
+      ["开始 – 结束", "2021-09 至 2025-06"],
+      ["主修课程", "影视编导、电视摄像、影视编辑艺术、影视写作、平面动画设计与制作、数码视频合成艺术等"],
+    ],
+  },
+];
+
+const ALL = ["内容运营","产品运营","用户运营","消费者洞察","快消","市场部"];
+
+const JOBS = [
+  {
+    company: "携程 · 海外热点内容中心",
+    meta: "内容运营实习生 ｜ 2026.08 – 2026.10 ｜ 上海",
+    items: [
+      { v:["内容运营","市场部"], tag:"项目 · 海外营销节点日历与选题规划（背景）",
+        s:"携程内部长期输出海外相关的活动宣传与旅游攻略，海外节日为内容营销提供了选题机会，但不同国家和地区的节日日期、受众及出行场景存在差异。此前，热点信息主要依靠人工检索，选题规划及内容准备缺少统一的整理标准。" },
+      { v:["内容运营","市场部"], tag:"项目 · 海外营销节点日历与选题规划（行动）",
+        s:"围绕海外节日、文化活动及出行场景整理营销节点，建立包含事件日期、地区、人群、相关性（市场部版可加：及拼假）信息的活动日历；根据事件类型和出行相关性整理热点分级标准，并结合抖音阅读量、TikTok 发帖量等信息判断内容热度，匹配不同节日、月份和出行场景的内容方向；使用 AI 爬虫定期收集热点信息与内容灵感，按照事件类型和出行场景整理素材，为后续选题和内容排期提供参考。" },
+      { v:["内容运营","市场部"], tag:"项目 · 海外营销节点日历与选题规划（结果）",
+        s:"整理出 5 类营销节点、6 类字段口径及 S/A/B 分级标准，形成可持续维护的热点日历与素材整理流程 skill，支持团队提前规划内容选题。" },
+
+      { v:["用户运营","消费者洞察","快消","市场部"], tag:"项目 · 用户意愿归因（背景）",
+        s:"频道的用户调研此前只有一个笼统的「愿意再来」指标，看不出用户为什么愿意或不愿意，也没有跨站点可比的口径；问卷 7 月刚换新版，历史数据断代，样本量口径也不统一。" },
+      { v:["用户运营","消费者洞察","快消","市场部"], tag:"项目 · 用户意愿归因（行动）",
+        s:"按月分析简中 / 英文 / 繁体三站点的问卷结果，把「愿意再来」拆成三档（一定会用+很可能会 / 不确定 / 可能性不大+一定不会），分别看各站点的分布与环比；再用多选题构成交叉定位不同意愿档位的人群在意什么（如「像广告」「找不到」是两大主诉），并结合开放题原话核对原因；逐月对照后台「有效份数」与 Q1 有效作答数，把样本口径统一到后者。" },
+      { v:["用户运营","消费者洞察","快消","市场部"], tag:"项目 · 用户意愿归因（结果）",
+        s:"产出三站点愿意率对比（89.87% / 80.00% / 57.78%）与环比变化（+6.7 / −8.5 / −16.1pp），定位到某站点跌幅全部落在「不确定」、没有明确不愿意；结论按产品 / 运营两侧归因后与产品团队对齐，落到具体优化项。" },
+      { v:["产品运营"], tag:"用户意愿归因分析（产品运营版的一句话版）",
+        s:"收集用户意愿率问卷，判断影响用户参与意愿的因素来自产品设计侧还是运营侧，并与产品团队对齐反馈，推动内容策略与产品体验的协同优化。" },
+
+      { v:["产品运营"], tag:"项目 · 热点内容走查工具（背景）",
+        s:"AI 巡检「T+1」机制存在延时，且无法覆盖站内所有问题，需要人工走查补充并实时发现热点榜问题、避免影响用户阅读。原流程需要逐条打开内容、对照审核标准、记录问题，再手动填写表格；不仅耗时也容易遗漏，缺少统一方法衡量规则的准确性。" },
+      { v:["产品运营"], tag:"项目 · 热点内容走查工具（行动）",
+        s:"vibe coding 搭建内网走查工具，支持 C 站、T 站及 1000+ 个城市分组的批量抓取，并设计 AB 分组沉淀人员分工；将 20 条审核规则和三档审核标准写入规则引擎，支持规则开关和级别调整，让系统先处理可自动判断的案例；设计人工批改功能，使用 50 条固定样本的人工标准答案检查规则判断结果，并根据误判案例调整规则优化准确率；设计用户视角规则，定期捕捉新问题迭代产品。" },
+      { v:["产品运营"], tag:"项目 · 热点内容走查工具（结果）",
+        s:"灵活设置抓取范围、自动化重复性动作、保留人工判断；走查流程由人工逐条判断转为系统自动判定与人工处理边界案例相结合；问题可直接进入 Case 库并同步至飞书，走查问题发现率提升 75%，人工耗时从 90 分缩短至 40 分（约 55%）。" },
+
+      { v:["内容运营"], tag:"热点内容策略与生产提效（备用一句话）",
+        s:"负责旅途相关节日与活动的热点内容策略设计，搭建热点日历 SOP 并结合 AI 爬虫定期整合灵感内容源；推动 AI 生成短视频与热点趋势的匹配应用，探索「策略前置 + AI 生产」的内容提效路径。" },
+    ],
+  },
+  {
+    company: "T GEN Limited（英国 · 曼彻斯特）",
+    meta: "直播运营实习生 ｜ 2025.10 – 2025.11 ｜ 英国",
+    items: [
+      { v:["内容运营","产品运营","用户运营","快消"], tag:"直播场控与品类讲解",
+        s:"负责 TikTok 床品英文直播间商品链接上下架与弹窗节奏、评论区实时互动答疑、引导外籍主播镜头展示与讲解节奏提示，保持直播间内容输出与转化节奏不中断，积累解决临场问题、把控讲解逻辑的实操经验。" },
+      { v:["内容运营","产品运营","用户运营","快消"], tag:"内容与转化联动",
+        s:"依据颜色花型差异设计对应讲解话术，持续追踪购物车下单量与 GMV 表现，将转化数据作为讲解重点与节奏调整的依据。穿插进行催单话术与限时倒计时提醒，确保商品曝光、用户提问与主播讲解之间不脱节，保障单场直播的流畅度与转化氛围。" },
+      { v:["市场部"], tag:"直播执行与内容转化（市场部版合并成一条）",
+        s:"负责 TikTok 床品英文直播间商品链接上下架与弹窗节奏、评论区互动答疑、引导外籍主播镜头展示，保持内容输出与转化节奏不中断；依据颜色花型设计讲解话术，追踪购物车下单量与 GMV，把转化数据作为讲解重点与节奏调整的依据。" },
+    ],
+  },
+  {
+    company: "无忧传媒 · 郭大侠项目组",
+    meta: "海外运营实习生 ｜ 2023.08 – 2023.11 ｜ 上海",
+    items: [
+      { v:ALL, tag:"用户增长与内容策略优化 / 社区运营与增长",
+        s:"负责头部 IP（郭大侠）在 B 站的社区策略与增长突破，通过分析平台文化特性与用户内容消费偏好，制定差异化选题与运营方案，实现累计增粉 2w+。将内容分发至 TikTok 海外账号，结合海外用户习惯对标题、封面及发布节奏进行本地化调整，积累跨平台内容运营与海外用户反馈的实操经验。" },
+      { v:ALL, tag:"数据驱动的 A/B Test / 内容测试与分发",
+        s:"对视频标题和封面进行 A/B 测试，根据数据反馈调整内容呈现；同步将内容分发至 TikTok 海外账号，并结合海外用户习惯调整标题、封面和发布节奏，优化跨平台（快手等）的流量漏斗转化效率。" },
+      { v:["产品运营","快消","市场部"], tag:"产品视觉与用户下单体验优化 / 商品视觉与转化",
+        s:"参与公司小程序商店的商品视觉呈现方案设计，负责详情页视觉构建与用户下单路径优化，提升商品转化效率。协同开发与设计团队，确保设计方案在技术框架内高效落地。" },
+    ],
+  },
+  {
+    company: "得物 · 泛娱乐生活组",
+    meta: "活动平台运营实习生 ｜ 2022.12 – 2023.01 ｜ 上海",
+    items: [
+      { v:ALL, tag:"创作者生态研究与策略输出 / UGC 研究与选题",
+        s:"深度参与泛生活类目的作者生态研究，通过对 UGC 案例的定性分析，识别创作者在热点结合与内容生产中的决策痛点。每日输出多维度选题策略，直接提升创作者的内容生产效率与平台内容供给质量。" },
+      { v:["用户运营","快消","市场部"], tag:"情人节主题活动策划 / 活动策划与设计",
+        s:"深度参与情人节主题活动策划，参与 H5 交互原型及视觉方案设计，并主导活动限定赠品的选品与设计。" },
+      { v:["内容运营","产品运营","用户运营","消费者洞察","快消"], tag:"数据监控与产品迭代闭环 / 数据监控与分析",
+        s:"独立负责每日活动数据看板监控与播报，通过对高热度 Case 的回溯复盘，总结 UGC 创作趋势与算法推荐规律，形成「数据洞察 → 策略调整 → 效果验证」的迭代闭环。" },
+      { v:["市场部"], tag:"数据监控与复盘（市场部版简写）",
+        s:"负责每日活动数据看板的监控与播报，复盘高热度案例，整理 UGC 创作趋势和后续选题方向。" },
+    ],
+  },
+];
+
+const PROJECTS = [
+  {
+    company: "SOS 舞社 · 校园公众号 (× 活动策划)",
+    meta: "2025.09 – 2026.06 ｜ 校园社团",
+    items: [
+      { v:["内容运营","用户运营","快消","市场部"], tag:"内容策划与账号运营",
+        s:"独立运营校级社团公众号，围绕 Runway、Winter Encore 等专场演出、免费公开课、社团招新和毕业季赛事策划选题，独立完成推文撰写与排版。" },
+      { v:["内容运营","用户运营","快消","创意策略","市场部"], tag:"视觉设计 / 物料",
+        s:"独立完成专场视觉海报、节目单、招新及公开课海报等物料设计，结合不同活动主题调整视觉表达，保持公众号内容与活动视觉风格的一致。" },
+    ],
+  },
+  {
+    company: "觅境 Haze · QQ 音乐 AI Hackathon",
+    meta: "2026.06 ｜ 项目链接 https://haze-five-delta.vercel.app/",
+    items: [
+      { v:["产品运营","创意策略"], tag:"项目背景",
+        s:"针对音乐平台缺乏空间维度、白噪音与音乐割裂、B 站沉浸视频无法自定义歌单等问题，设计音乐 × 空间沉浸体验平台。" },
+      { v:["产品运营","创意策略"], tag:"Prompt 工程",
+        s:"针对 AI 文生视频循环接缝、文字乱码两大核心问题，设计系统级两层 Prompt 架构：第一层用 Claude 做场景语义转译，第二层注入硬性视频规则模板；通过元素替换规则从源头规避问题。" },
+      { v:["产品运营","创意策略"], tag:"vibe coding 前端实现",
+        s:"独立完成首页、精选空间广场、沉浸式播放页等核心页面开发；建立完整视觉规范，统一全产品设计语言。" },
+    ],
+  },
+];
+
+const SKILLS = [
+  { v:["内容运营","用户运营","快消","创意策略","市场部"], tag:"视觉与视频",
+    s:"熟练使用 Photoshop、Premiere Pro、Final Cut Pro、剪映及 Canva，具备电影级视频剪辑与拍摄、图像处理能力。" },
+  { v:["内容运营","产品运营","用户运营","消费者洞察"], tag:"AI 工具",
+    s:"熟练使用 ChatGPT、Claude、Codex 辅助提升工作效率，熟悉 Lovart、即梦等 AI 生图工具，以及 Trae、Cursor、Kiro 等 AI 编程环境，可独立完成简单产品 Demo；精通 AI 视频制作流程，为服装品牌制作秀场预热 AI 视频项目。" },
+  { v:["产品运营","用户运营","消费者洞察"], tag:"数据",
+    s:"熟练使用 Excel（VLOOKUP、数据透视表）与 SQL 进行基础数据处理；具备问卷分层分析与活动数据看板播报经验。" },
+  { v:["市场部"], tag:"市场部整合版（一段话直接粘）",
+    s:"具备视觉设计及 AI 辅助工作能力，熟练使用 Adobe 系列工具（Photoshop、Premiere Pro、Final Cut Pro、Canva）；熟练使用 Claude、Codex 及 AI 编程环境辅助内容生产与效率提升；具备数据整理与分析能力，熟练使用 Excel（VLOOKUP、数据透视表）、SQL 进行基础数据处理。" },
+  { v:ALL, tag:"语言",
+    s:"英语：雅思 7.0（听力 7.5、阅读 7.5、写作 7.0、口语 6.0）。" },
+];
+
+const FORM = [
+  ["学历", "硕士研究生（本科：本科）"],
+  ["学历类型", "统招全日制"],
+  ["是否最高学历", "是（硕士）/ 否（本科那一栏）"],
+  ["学校名称", "曼彻斯特大学 / 上海师范大学"],
+  ["学院名称", "Schools of Arts, Languages and Cultures / 影视传媒学院（待核对）"],
+  ["专业名称", "电影理论 / 广播电视编导"],
+  ["专业排名", "前 20%（硕士）"],
+  ["学号 · 实验室 · 研究方向", "无 / 不适用"],
+  ["毕业时间", "2026-12（硕士）—— 需在 2027-08-31 前，符合校招要求"],
+  ["求职意向", "内容运营 / 产品运营 / 用户运营 / 市场部（按岗位调整）"],
+];
+
+/* ---------- 渲染 ---------- */
+
+const chipsEl = document.getElementById("chips");
+["全部", ...VERSIONS].forEach(v=>{
+  const b = document.createElement("button");
+  b.className = "chip" + (v==="全部" ? " on" : "");
+  b.textContent = v;
+  b.dataset.v = v;
+  b.onclick = ()=>{
+    current = v;
+    [...chipsEl.children].forEach(c=>c.classList.toggle("on", c.dataset.v===v));
+    renderAll();
+    updateStatus();
+    const jobs = document.getElementById("sec-jobs");
+    if(jobs) jobs.scrollIntoView({behavior:"smooth", block:"start"});
+  };
+  chipsEl.appendChild(b);
+});
+
+function copy(text, btn){
+  const done = ()=>{
+    const t = document.getElementById("toast");
+    t.classList.add("on");
+    clearTimeout(window.__toast);
+    window.__toast = setTimeout(()=>t.classList.remove("on"), 1100);
+    if(btn){ const old = btn.textContent; btn.textContent = "copied"; setTimeout(()=>btn.textContent = old, 900); }
+  };
+  if(navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText(text).then(done).catch(()=>fallback(text, done));
+  } else { fallback(text, done); }
+}
+function fallback(text, done){
+  const ta = document.createElement("textarea");
+  ta.value = text; ta.style.position="fixed"; ta.style.opacity="0";
+  document.body.appendChild(ta); ta.select();
+  try{ document.execCommand("copy"); }catch(e){}
+  document.body.removeChild(ta); done();
+}
+
+function el(html){ const d=document.createElement("div"); d.innerHTML=html.trim(); return d.firstElementChild; }
+function esc(s){ return String(s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c])); }
+
+function kvRender(container, rows){
+  container.innerHTML = "";
+  rows.forEach(([k,v])=>{
+    const kEl = el(`<div class="k">${esc(k)}</div>`);
+    const vEl = el(`<div class="v">${esc(v)}</div>`);
+    const cEl = el(`<div class="c"></div>`);
+    const b = el(`<button class="copy">copy</button>`);
+    b.onclick = (e)=>copy(v, e.target);
+    cEl.appendChild(b);
+    container.append(kEl, vEl, cEl);
+  });
+}
+
+function linksRender(container, rows){
+  container.innerHTML = "";
+  rows.forEach(([k,v])=>{
+    const kEl = el(`<div class="k">${esc(k)}</div>`);
+    const vEl = v
+      ? el(`<div class="v"><a href="${esc(v)}" target="_blank" rel="noopener">${esc(v)}</a></div>`)
+      : el(`<div class="v todo">待补充（在 HTML 的 LINKS 里填）</div>`);
+    const cEl = el(`<div class="c"></div>`);
+    if(v){
+      const b = el(`<button class="copy">copy</button>`);
+      b.onclick = (e)=>copy(v, e.target);
+      cEl.appendChild(b);
+    }
+    container.append(kEl, vEl, cEl);
+  });
+}
+
+function visible(item){ return current==="全部" || item.v.includes(current); }
+
+const PROJ_RE = /^(.*?)（(背景|行动|结果)）$/;
+
+function unitize(items, mergeAll, header){
+  if(mergeAll){
+    return [{ kind:"project", title: header, blocks: items.map(it=>({ k: it.tag, t: it.s })) }];
+  }
+  const out = [];
+  items.forEach(it=>{
+    const m = it.tag.match(PROJ_RE);
+    if(!m){ out.push({ kind:"single", title: it.tag, blocks: [{ k: "", t: it.s }] }); return; }
+    const base = m[1].trim().replace(/^项目\s*·\s*/, "项目：");
+    let g = out.find(x=>x.kind === "project" && x.title === base);
+    if(!g){ g = { kind:"project", title: base, blocks: [] }; out.push(g); }
+    g.blocks.push({ k: m[2], t: it.s });
+  });
+  return out;
+}
+
+function unitText(u){
+  if(u.kind === "single") return u.title + "：" + u.blocks[0].t;
+  return u.title + "\n" + u.blocks.map(b=> b.k ? (b.k + "：" + b.t) : b.t).join("\n");
+}
+
+function unitPlain(u){
+  if(u.kind === "single") return u.title + "：" + u.blocks[0].t;
+  return u.title + "\n" + u.blocks.map(b=> b.k ? (b.k + "：" + b.t) : b.t).join("\n");
+}
+
+function unitHtml(u){
+  if(u.kind === "single") return `<b>${esc(u.title)}</b>：${esc(u.blocks[0].t)}`;
+  return `<b>${esc(u.title)}</b><br>` +
+    u.blocks.map(b=> b.k ? `<b>${esc(b.k)}</b>：${esc(b.t)}` : esc(b.t)).join("<br>");
+}
+
+function flash(btn){
+  const t = document.getElementById("toast");
+  if(t){
+    t.classList.add("on");
+    clearTimeout(window.__toast);
+    window.__toast = setTimeout(()=>t.classList.remove("on"), 1100);
+  }
+  if(btn){ const old = btn.textContent; btn.textContent = "copied"; setTimeout(()=>btn.textContent = old, 900); }
+}
+
+// 同时写 text/plain 与 text/html：粘到 Word/飞书/富文本框得到真加粗，
+// 粘到纯文本框则拿到不带星号的干净纯文本。
+async function copyRich(plain, html, btn){
+  try{
+    if(navigator.clipboard && window.ClipboardItem && window.isSecureContext){
+      await navigator.clipboard.write([new ClipboardItem({
+        "text/plain": new Blob([plain], { type: "text/plain" }),
+        "text/html": new Blob([html], { type: "text/html" })
+      })]);
+      flash(btn);
+      return;
+    }
+  }catch(e){ /* 落到下面的纯文本回退 */ }
+  copy(plain, btn);
+}
+
+function renderGroup(container, groups, emptyText, opts){
+  opts = opts || {};
+  container.innerHTML = "";
+  let shown = 0;
+  groups.forEach(g=>{
+    const items = g.items.filter(visible);
+    if(!items.length) return;
+    shown += items.length;
+    const card = el(`<div class="group">
+      <div class="group-h">
+        <h3>${esc(g.company)}</h3><span class="m">${esc(g.meta)}</span>
+        <button class="copy">copy 整段</button>
+      </div>
+      <div class="body"></div>
+    </div>`);
+    const body = card.querySelector(".body");
+    const units = unitize(items, opts.mergeAll, g.company);
+    units.forEach(u=>{
+      const src = items.find(it=> it.tag.indexOf(u.title) === 0) || items[0];
+      const chips = src.v.map(x=>`<span>${esc(x)}</span>`).join("");
+      const node = el(`<div class="proj">
+        <div class="top"><span class="tag">${esc(u.title)}</span><span class="vs">${chips}</span></div>
+        <div class="blocks"></div>
+      </div>`);
+      const blocksEl = node.querySelector(".blocks");
+      u.blocks.forEach(b=>{
+        blocksEl.appendChild(el(`<div class="blk">
+          ${b.k ? `<span class="k">${esc(b.k)}</span>` : ""}
+          <span class="t">${esc(b.t)}</span>
+        </div>`));
+      });
+      body.appendChild(node);
+    });
+    const plain = g.company + (g.meta ? "\n" + g.meta : "") + "\n\n" + units.map(unitPlain).join("\n\n");
+    const html = `<b>${esc(g.company)}</b>` + (g.meta ? `<br>${esc(g.meta)}` : "") +
+      "<br><br>" + units.map(unitHtml).join("<br><br>");
+    card.querySelector(".group-h .copy").onclick = (e)=>copyRich(plain, html, e.target);
+    container.appendChild(card);
+  });
+  if(!shown) container.appendChild(el(`<div class="empty">${esc(emptyText)}</div>`));
+}
+
+function renderEdu(){
+  const eduEl = document.getElementById("edu");
+  if(eduEl.dataset.done) return;
+  EDU.forEach(e=>{
+    const card = el(`<div class="group">
+      <div class="group-h"><h3>${esc(e.title)}</h3><span class="m">${esc(e.meta)}</span></div>
+      <div class="kv"></div>
+    </div>`);
+    kvRender(card.querySelector(".kv"), e.rows);
+    eduEl.appendChild(card);
+  });
+  eduEl.dataset.done = "1";
+}
+
+function renderAll(){
+  renderEdu();
+  renderGroup(document.getElementById("jobs"), JOBS, "这个版本没有用到这几段实习的文案");
+  renderGroup(document.getElementById("projects"), PROJECTS, "这个版本没有放项目经历", { mergeAll: true });
+  renderGroup(document.getElementById("skills"), [{company:"个人技能", meta:"同一批技能，各版取舍与写法不同", items:SKILLS}], "这个版本没有技能条目");
+}
+
+function updateStatus(){
+  const s = document.getElementById("status");
+  if(!s) return;
+  const j = JOBS.reduce((n,g)=>n+g.items.filter(visible).length, 0);
+  const p = PROJECTS.reduce((n,g)=>n+g.items.filter(visible).length, 0);
+  const k = SKILLS.filter(visible).length;
+  s.textContent = (current === "全部" ? "全部版本" : current) + " · 实习 " + j + " 条 / 项目 " + p + " 条 / 技能 " + k + " 条";
+}
+
+function renderSummary(){
+  const k = document.getElementById("kpis");
+  const s = document.getElementById("sumnotes");
+  if(!k || !SUMMARY) return;
+  const delta = SUMMARY.appliedDelta;
+  const closing = SUMMARY.closing7 || [];
+  const newOpen = SUMMARY.newOpen || [];
+  k.innerHTML = "";
+  const tiles = [
+    { n: SUMMARY.applied, l: "Total applied", s: "总投递（已投递）" },
+    { n: (delta > 0 ? "+" : "") + delta, l: "Today applied", s: "今日投递 · 较 " + SUMMARY.baseline },
+    { n: newOpen.length, l: "Newly opened", s: "今日新开秋招" },
+    { n: closing.length, l: "Closing ≤ 7d", s: "7 日内关闭 · 未投递", warn: closing.length > 0 }
+  ];
+  tiles.forEach(t=>{
+    k.appendChild(el(`<div class="kpi${t.warn ? " warn" : ""}">
+      <div class="n">${esc(t.n)}</div>
+      <div class="l">${esc(t.l)}</div>
+      <div class="s">${esc(t.s)}</div>
+    </div>`));
+  });
+  s.innerHTML = "";
+  const shown = closing.slice(0, 6);
+  shown.forEach(c=>{
+    s.appendChild(el(`<div class="note"><span class="when">Closing</span>
+      <span><b>${esc(c.name)}</b> · ${esc(c.date)} · ${c.days === 0 ? "今天截止" : "剩 " + c.days + " 天"} · ${esc(c.status)}</span></div>`));
+  });
+  if(closing.length > shown.length){
+    s.appendChild(el(`<div class="note"><span class="when">…</span>
+      <span>另 <b>${closing.length - shown.length}</b> 家同在这 7 天内到期（见下方面板明细）</span></div>`));
+  }
+  newOpen.forEach(n=>{
+    s.appendChild(el(`<div class="note"><span class="when">New</span>
+      <span><b>${esc(n.name)}</b> · ${esc(n.when)} · 截止 ${esc(n.deadline)}</span></div>`));
+  });
+  document.getElementById("summeta").textContent =
+    "数据源：" + SUMMARY.source + " · 更新于 " + SUMMARY.generated + " · 由程小帮我每天 08:30 / 20:30 自动覆写（静态页面无法直连飞书，所以不是实时）";
+}
+
+kvRender(document.getElementById("basic"), BASIC);
+renderSummary();
+linksRender(document.getElementById("links"), LINKS);
+kvRender(document.getElementById("form"), FORM);
+renderAll();
+updateStatus();
+
+document.getElementById("foot-right").textContent =
+  "Updated " + new Date().toLocaleDateString("en-CA") + " · " + VERSIONS.length + " versions";
+</script>
+</body>
+</html>
